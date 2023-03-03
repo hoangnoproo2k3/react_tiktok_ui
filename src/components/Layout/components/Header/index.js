@@ -15,12 +15,13 @@ import {
     faUpload,
     faUser,
 } from '@fortawesome/free-solid-svg-icons';
-
+import routesConfig from '~/config/routes';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
 import Image from '~/components/images';
 import { InboxIcon, MessageIcon, UploadIcon } from '~/components/Icons';
 import Search from '../Search';
+import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
@@ -30,6 +31,66 @@ const MENU_ITEMS = [
         children: {
             title: 'Language',
             data: [
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
                 {
                     type: 'language',
                     code: 'en',
@@ -90,7 +151,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <img src={images.logo} alt="Tiktok"></img>
+                <Link to={routesConfig.home} className={cx('logo-link')}>
+                    <img src={images.logo} alt="Tiktok"></img>
+                </Link>
                 <Search />
                 <div className={cx('action')}>
                     {currentUser ? (

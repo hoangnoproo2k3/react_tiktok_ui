@@ -57,48 +57,62 @@ function Search() {
     const handleHideResult = () => {
         setShowResult(false);
     };
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+        if (!searchValue.startsWith(' ')) {
+            setSearcValue(e.target.value);
+        }
+    };
+
     return (
-        <HeadlessTippy
-            interactive="true"
-            visible={showResult && searchResult.length > 0}
-            onClickOutside={handleHideResult}
-            render={(attrs) => (
-                <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                    <PopperWrapper>
-                        <h4 className={cx('search-title')}>Accounts</h4>
-                        {searchResult.map((item) => (
-                            <AccountItem key={item.id} data={item}></AccountItem>
-                        ))}
-                    </PopperWrapper>
-                </div>
-            )}
-        >
-            <div className={cx('search')}>
-                <input
-                    ref={inputRef}
-                    value={searchValue}
-                    placeholder="Tìm kiếm tài khoản và video"
-                    spellCheck="false"
-                    onChange={(e) => {
-                        setSearcValue(e.target.value);
-                    }}
-                    onFocus={() => {
-                        setShowResult(true);
-                    }}
-                />
-                {!!searchValue && !loading && (
-                    <button className={cx('clear')} onClick={handleClear}>
-                        <FontAwesomeIcon icon={faCircleXmark}></FontAwesomeIcon>
-                    </button>
+        //Using a wrapper <div> or <span> tag around the reference element solves this by creating a new parentNode context.
+        <div>
+            <HeadlessTippy
+                // appendTo={() => document.body}
+                interactive="true"
+                visible={showResult && searchResult.length > 0}
+                onClickOutside={handleHideResult}
+                render={(attrs) => (
+                    <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+                        <PopperWrapper>
+                            <h4 className={cx('search-title')}>Accounts</h4>
+                            {searchResult.map((item) => (
+                                <AccountItem key={item.id} data={item}></AccountItem>
+                            ))}
+                        </PopperWrapper>
+                    </div>
                 )}
+            >
+                <div className={cx('search')}>
+                    <input
+                        ref={inputRef}
+                        value={searchValue}
+                        placeholder="Tìm kiếm tài khoản và video"
+                        spellCheck="false"
+                        onChange={handleChange}
+                        onFocus={() => {
+                            setShowResult(true);
+                        }}
+                    />
+                    {!!searchValue && !loading && (
+                        <button className={cx('clear')} onClick={handleClear}>
+                            <FontAwesomeIcon icon={faCircleXmark}></FontAwesomeIcon>
+                        </button>
+                    )}
 
-                {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner}></FontAwesomeIcon>}
+                    {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner}></FontAwesomeIcon>}
 
-                <button className={cx('search-btn')}>
-                    <SearchIcon />
-                </button>
-            </div>
-        </HeadlessTippy>
+                    <button
+                        className={cx('search-btn')}
+                        onMouseDown={(e) => {
+                            e.preventDefault();
+                        }}
+                    >
+                        <SearchIcon />
+                    </button>
+                </div>
+            </HeadlessTippy>
+        </div>
     );
 }
 
