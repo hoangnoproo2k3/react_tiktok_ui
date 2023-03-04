@@ -15,7 +15,7 @@ import {
     faUpload,
     faUser,
 } from '@fortawesome/free-solid-svg-icons';
-import routesConfig from '~/config/routes';
+import config from '~/config';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
 import Image from '~/components/images';
@@ -31,66 +31,6 @@ const MENU_ITEMS = [
         children: {
             title: 'Language',
             data: [
-                {
-                    type: 'language',
-                    code: 'en',
-                    title: 'English',
-                },
-                {
-                    type: 'language',
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    type: 'language',
-                    code: 'en',
-                    title: 'English',
-                },
-                {
-                    type: 'language',
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    type: 'language',
-                    code: 'en',
-                    title: 'English',
-                },
-                {
-                    type: 'language',
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    type: 'language',
-                    code: 'en',
-                    title: 'English',
-                },
-                {
-                    type: 'language',
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    type: 'language',
-                    code: 'en',
-                    title: 'English',
-                },
-                {
-                    type: 'language',
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    type: 'language',
-                    code: 'en',
-                    title: 'English',
-                },
-                {
-                    type: 'language',
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
                 {
                     type: 'language',
                     code: 'en',
@@ -151,7 +91,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to={routesConfig.home} className={cx('logo-link')}>
+                <Link to={config.routes.home} className={cx('logo-link')}>
                     <img src={images.logo} alt="Tiktok"></img>
                 </Link>
                 <Search />
